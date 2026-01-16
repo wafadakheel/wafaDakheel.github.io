@@ -1,75 +1,60 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: #F5F5F5; /* خلفية عامة فاتحة */
-    color: #333333;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
 header {
-    background: #FF4081; /* اللون الرئيسي */
-    color: #ffffff;
+    background: #1f3c88;
+    color: #fff;
+    padding: 30px;
     text-align: center;
-    padding: 40px 0;
 }
 
 nav {
-    background: #ff79b0; /* اللون الثانوي */
+    background: #162447;
     padding: 10px;
     text-align: center;
 }
 
 nav a {
-    color: #ffffff;
+    color: #fff;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #FF4081;
+    text-decoration: underline;
 }
 
-/* ====== الأقسام ====== */
 section {
-    padding: 50px 20px;
+    padding: 40px;
     max-width: 900px;
     margin: auto;
-    background: #ebebeb; /* خلفية الأقسام فاتحة */
-    border-radius: 8px;
-    margin-bottom: 30px;
 }
 
-/* ====== عناوين الأقسام ====== */
 h2 {
-    color: #FF4081;
-    margin-bottom: 20px;
+    color: #1f3c88;
 }
 
-a {
-    color: #FF4081;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #ff79b0;
+ul {
+    list-style-type: square;
 }
 
 .project {
-    border-left: 5px solid #FF4081;
-    background: #ffffff;
+    background: #fff;
     padding: 20px;
     margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-left: 5px solid #1f3c88;
 }
 
 footer {
-    background: #ff79b0;
-    color: #ffffff;
+    background: #162447;
+    color: #fff;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    padding: 15px;
 }
