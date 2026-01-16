@@ -1,60 +1,81 @@
+/* ====== الألوان العامة ====== */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #F5F5F5; /* لون الخلفية الرئيسي */
+    color: #333333;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
 }
 
+/* ====== رأس الصفحة ====== */
 header {
-    background: #1f3c88;
-    color: #fff;
-    padding: 30px;
+    background: #FF4081; /* اللون الرئيسي */
+    color: #ffffff;
     text-align: center;
+    padding: 40px 0;
 }
 
+/* ====== قائمة التنقل ====== */
 nav {
-    background: #162447;
+    background: #ff79b0; /* اللون الثانوي */
     padding: 10px;
     text-align: center;
 }
 
 nav a {
-    color: #fff;
+    color: #ffffff;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #FF4081;
 }
 
+/* ====== الأقسام ====== */
 section {
-    padding: 40px;
+    padding: 50px 20px;
     max-width: 900px;
     margin: auto;
+    background: #ebebeb; /* خلفية أقسام خفيفة */
+    border-radius: 8px;
+    margin-bottom: 30px;
 }
 
+/* ====== عناوين الأقسام ====== */
 h2 {
-    color: #1f3c88;
+    color: #FF4081;
+    margin-bottom: 20px;
 }
 
-ul {
-    list-style-type: square;
+/* ====== روابط ====== */
+a {
+    color: #FF4081;
+    text-decoration: none;
 }
 
+a:hover {
+    color: #ff79b0;
+}
+
+/* ====== البطاقات في قسم المشاريع ====== */
 .project {
-    background: #fff;
+    border-left: 5px solid #FF4081;
+    background: #ffffff;
     padding: 20px;
     margin-bottom: 15px;
-    border-left: 5px solid #1f3c88;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
+/* ====== الفوتر ====== */
 footer {
-    background: #162447;
-    color: #fff;
+    background: #ff79b0;
+    color: #ffffff;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
+    margin-top: 40px;
 }
