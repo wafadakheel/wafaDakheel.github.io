@@ -1,25 +1,45 @@
-/* ====== General Styles ====== */
+:root {
+    /* ====== Primary Colors ====== */
+    --primary-100: #FF4081;
+    --primary-200: #ff79b0;
+    --primary-300: #ffe4ff;
+
+    /* ====== Accent Colors ====== */
+    --accent-100: #00E5FF;
+    --accent-200: #00829b;
+
+    /* ====== Text Colors ====== */
+    --text-100: #333333;
+    --text-200: #5c5c5c;
+
+    /* ====== Background Colors ====== */
+    --bg-100: #F5F5F5; /* Main background */
+    --bg-200: #ebebeb; /* Section background */
+    --bg-300: #c2c2c2; /* Cards background */
+}
+
+/* ====== Global Styles ====== */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #F5F5F5; /* Main background */
-    color: #333;
+    background-color: var(--bg-100);
+    color: var(--text-100);
 }
 
 /* ====== Header ====== */
 header {
-    background: #FF4081; /* Primary color */
+    background-color: var(--primary-100);
     color: #fff;
-    padding: 30px;
+    padding: 40px 20px;
     text-align: center;
 }
 
 /* ====== Navigation ====== */
 nav {
-    background: #ff79b0; /* Secondary color */
-    padding: 10px;
+    background-color: var(--primary-200);
+    padding: 12px;
     text-align: center;
 }
 
@@ -32,45 +52,64 @@ nav a {
 }
 
 nav a:hover {
-    color: #FF4081;
+    color: var(--primary-100);
     text-decoration: underline;
 }
 
 /* ====== Sections ====== */
 section {
-    padding: 40px;
-    max-width: 900px;
+    padding: 50px 20px;
+    max-width: 1000px;
     margin: auto;
-    background-color: #ebebeb; /* Section background */
-    border-radius: 8px;
+    background-color: var(--bg-200);
+    border-radius: 12px;
     margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
 /* ====== Section Headings ====== */
 h2 {
-    color: #FF4081;
+    color: var(--primary-100);
     margin-bottom: 20px;
 }
 
 /* ====== Lists ====== */
 ul {
     list-style-type: square;
+    color: var(--text-200);
 }
 
 /* ====== Project Cards ====== */
 .project {
-    background: #ffffff;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-left: 5px solid #FF4081; /* Border color */
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background-color: var(--bg-300);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-left: 6px solid var(--primary-100);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ====== Links ====== */
+a {
+    color: var(--primary-100);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-200);
 }
 
 /* ====== Footer ====== */
 footer {
-    background: #ff79b0;
+    background-color: var(--primary-200);
     color: #fff;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
+    margin-top: 40px;
 }
