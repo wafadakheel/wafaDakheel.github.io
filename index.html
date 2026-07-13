@@ -1,81 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wafa Dakheel - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wafa Dakheel | Data Analyst & Trainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-deep:#e75d9a;
+    --pink-soft:#ffd6ea;
+    --pink-mid:#ff9bc4;
+    --sky-deep:#2fb6d9;
+    --sky-soft:#c9f1ff;
+    --sky-mid:#6bd6f2;
+    --ink:#33283a;
+    --ink-soft:#7c6d84;
+    --cream:#fffaf9;
+    --card:#ffffff;
+    --shadow: 0 20px 45px -20px rgba(231,93,154,0.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Manrope',sans-serif; background:var(--cream); color:var(--ink); overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;}
+  .blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; z-index:0;}
+
+  nav{
+    position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6%; background:rgba(255,250,249,0.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(231,93,154,0.15);
+  }
+  .logo{font-family:'Fraunces',serif; font-weight:700; font-size:1.4rem; color:var(--pink-deep);}
+  .logo span{color:var(--sky-deep);}
+  nav ul{display:flex; gap:30px; list-style:none;}
+  nav a{text-decoration:none; color:var(--ink); font-weight:700; font-size:.92rem; position:relative; padding:4px 0;}
+  nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--pink-deep),var(--sky-deep));transition:width .3s;}
+  nav a:hover::after{width:100%;}
+
+  header.hero{position:relative; min-height:90vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:80px 6% 60px;}
+  .blob1{width:440px;height:440px; background:var(--pink-mid); top:-140px; left:-110px;}
+  .blob2{width:400px;height:400px; background:var(--sky-mid); bottom:-160px; right:-130px;}
+  .hero-inner{position:relative; z-index:2; max-width:760px;}
+  .avatar{
+    width:150px;height:150px;border-radius:50%; margin:0 auto 26px;
+    background:linear-gradient(145deg,var(--pink-mid),var(--sky-mid));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif; font-weight:700; font-size:3rem; color:#fff;
+    box-shadow:var(--shadow); border:5px solid #fff;
+  }
+  header.hero h1{font-size:clamp(2.4rem,6vw,4rem); font-weight:700; color:var(--ink); line-height:1.1;}
+  header.hero h1 .accent{color:var(--pink-deep); font-style:italic;}
+  .role{font-size:1.15rem; color:var(--sky-deep); margin-top:14px; font-weight:800; letter-spacing:.5px;}
+  .tagline{max-width:560px; margin:22px auto 34px; color:var(--ink-soft); font-size:1.05rem; line-height:1.9;}
+  .btn-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn{padding:14px 32px; border-radius:50px; text-decoration:none; font-weight:800; transition:transform .25s; display:inline-block;}
+  .btn-primary{background:linear-gradient(90deg,var(--pink-deep),var(--pink-mid)); color:#fff; box-shadow:var(--shadow);}
+  .btn-outline{border:2px solid var(--sky-deep); color:var(--sky-deep); background:#fff;}
+  .btn:hover{transform:translateY(-4px);}
+
+  section{position:relative; padding:100px 6%; z-index:1;}
+  .eyebrow{display:inline-block; background:var(--sky-soft); color:var(--sky-deep); font-weight:800; padding:6px 18px; border-radius:30px; font-size:.8rem; margin-bottom:14px; letter-spacing:.5px; text-transform:uppercase;}
+  .sec-title{font-size:clamp(1.9rem,4vw,2.7rem); font-weight:700; color:var(--ink); margin-bottom:16px;}
+  .sec-title .hl{color:var(--pink-deep); font-style:italic;}
+  .sec-sub{color:var(--ink-soft); max-width:620px; margin-bottom:50px; line-height:1.9;}
+
+  #about{background:linear-gradient(180deg,var(--cream),#fff0f6);}
+  .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center;}
+  .about-card{background:var(--card); border-radius:28px; padding:38px; box-shadow:var(--shadow); border:1px solid var(--pink-soft); line-height:2; color:var(--ink-soft); font-size:1.03rem;}
+  .about-card strong{color:var(--ink);}
+  .stats{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .stat{background:linear-gradient(145deg,#fff,var(--sky-soft)); border-radius:22px; padding:26px; text-align:center; box-shadow:0 15px 30px -15px rgba(47,182,217,.4);}
+  .stat .num{font-family:'Fraunces',serif; font-weight:700; font-size:1.5rem; color:var(--pink-deep);}
+  .stat .lbl{font-size:.82rem; color:var(--ink-soft); font-weight:700; margin-top:4px;}
+
+  .skills-wrap{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
+  .skill-pill{background:#fff; border:2px solid var(--pink-soft); border-radius:18px; padding:20px 24px; box-shadow:0 10px 25px -18px rgba(231,93,154,.5); transition:transform .25s, border-color .25s;}
+  .skill-pill:hover{transform:translateY(-6px); border-color:var(--sky-deep);}
+  .skill-pill .sk-title{font-weight:800; display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+  .skill-pill .sk-desc{color:var(--ink-soft); font-size:.88rem; line-height:1.6;}
+  .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--pink-deep),var(--sky-deep)); flex-shrink:0;}
+
+  #projects{background:linear-gradient(180deg,#f0fbff,var(--cream));}
+  .projects-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px;}
+  .pcard{background:var(--card); border-radius:26px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(231,93,154,.12); display:flex; flex-direction:column; transition:transform .3s;}
+  .pcard:hover{transform:translateY(-8px);}
+  .pcard .thumb{height:130px; background:linear-gradient(135deg,var(--pink-mid),var(--sky-mid)); display:flex;align-items:center;justify-content:center; color:#fff; font-family:'Fraunces',serif; font-weight:700; font-size:1.3rem;}
+  .pcard .pbody{padding:26px; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .pcard h3{font-weight:700; font-size:1.2rem; color:var(--ink);}
+  .pcard p{color:var(--ink-soft); font-size:.93rem; line-height:1.8; flex:1;}
+  .tag-row{display:flex; gap:8px; flex-wrap:wrap;}
+  .tag{background:var(--sky-soft); color:var(--sky-deep); font-size:.75rem; font-weight:800; padding:4px 12px; border-radius:20px;}
+
+  #contact{text-align:center;}
+  .contact-card{max-width:640px; margin:0 auto; background:linear-gradient(145deg,var(--pink-deep),var(--sky-deep)); border-radius:32px; padding:60px 40px; color:#fff; box-shadow:var(--shadow);}
+  .contact-card h2{color:#fff;}
+  .contact-card p{margin:16px 0 30px; opacity:.95;}
+  .social-row{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+  .social-row a{background:rgba(255,255,255,.18); color:#fff; text-decoration:none; font-weight:800; padding:12px 24px; border-radius:50px; transition:background .25s, transform .25s; border:1px solid rgba(255,255,255,.4);}
+  .social-row a:hover{background:#fff; color:var(--pink-deep); transform:translateY(-3px);}
+
+  footer{text-align:center; padding:34px 6% 40px; color:var(--ink-soft); font-size:.85rem;}
+  footer span{color:var(--pink-deep); font-weight:800;}
+
+  @media(max-width:820px){ .about-grid{grid-template-columns:1fr;} nav ul{display:none;} }
+</style>
 </head>
 <body>
 
-    <!-- ===== Header ===== -->
-    <header>
-        <h1>Wafa Dakheel</h1>
-        <p>Excel | Power BI | SQL | Data Analyst & Trainer</p>
-    </header>
+<nav>
+  <div class="logo">Wafa <span>Dakheel</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <!-- ===== Navigation ===== -->
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<header class="hero" id="home">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="hero-inner">
+    <div class="avatar">WD</div>
+    <h1>Wafa <span class="accent">Dakheel</span></h1>
+    <div class="role">DATA ANALYST & TRAINER · EXCEL · POWER BI · SQL</div>
+    <p class="tagline">I turn raw numbers into clear, actionable stories — helping businesses and teams make smarter, data-driven decisions.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</header>
 
-    <!-- ===== About Section ===== -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a Data Analyst and Trainer specializing in Excel, Power BI, and SQL. 
-            I help businesses and teams make smarter decisions with data-driven insights.
-        </p>
-    </section>
+<section id="about">
+  <span class="eyebrow">About Me</span>
+  <h2 class="sec-title">Making data <span class="hl">make sense</span></h2>
+  <div class="about-grid">
+    <div class="about-card">
+      I am a <strong>Data Analyst and Trainer</strong> specializing in Excel, Power BI, and SQL.
+      I help businesses and teams make smarter decisions with data-driven insights — from cleaning
+      messy datasets to building dashboards that turn numbers into a story people can act on. Beyond
+      analysis, I also enjoy <strong>training and coaching teams</strong> to become more confident and
+      capable with their own data.
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">Excel</div><div class="lbl">Advanced Formulas & Pivots</div></div>
+      <div class="stat"><div class="num">Power BI</div><div class="lbl">Dashboards & DAX</div></div>
+      <div class="stat"><div class="num">SQL</div><div class="lbl">Queries & Data Mgmt</div></div>
+      <div class="stat"><div class="num">Training</div><div class="lbl">Coaching Teams</div></div>
+    </div>
+  </div>
+</section>
 
-    <!-- ===== Skills Section ===== -->
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Excel (Advanced Formulas, Pivot Tables, Power Pivot)</li>
-            <li>Power BI (Dashboards, DAX, Reports)</li>
-            <li>SQL (Queries, Data Management, Analysis)</li>
-            <li>Data Visualization & Dashboard Design</li>
-            <li>Training & Coaching Teams</li>
-        </ul>
-    </section>
+<section id="skills">
+  <span class="eyebrow">Skills</span>
+  <h2 class="sec-title">Tools I work <span class="hl">with</span></h2>
+  <p class="sec-sub">A blend of technical, analytical, and teaching skills used to turn data into decisions.</p>
+  <div class="skills-wrap">
+    <div class="skill-pill"><div class="sk-title"><span class="dot"></span>Excel</div><div class="sk-desc">Advanced Formulas, Pivot Tables, Power Pivot</div></div>
+    <div class="skill-pill"><div class="sk-title"><span class="dot"></span>Power BI</div><div class="sk-desc">Dashboards, DAX, Reports</div></div>
+    <div class="skill-pill"><div class="sk-title"><span class="dot"></span>SQL</div><div class="sk-desc">Queries, Data Management, Analysis</div></div>
+    <div class="skill-pill"><div class="sk-title"><span class="dot"></span>Data Visualization</div><div class="sk-desc">Dashboard Design & Storytelling</div></div>
+    <div class="skill-pill"><div class="sk-title"><span class="dot"></span>Training & Coaching</div><div class="sk-desc">Upskilling teams on data tools</div></div>
+  </div>
+</section>
 
-    <!-- ===== Projects Section ===== -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Sales Dashboard</h3>
-            <p>Created interactive dashboards for Sales teams to track revenue growth and KPIs.</p>
-        </div>
-        <div class="project">
-            <h3>Healthcare Analysis</h3>
-            <p>Analyzed patient and treatment data to optimize hospital performance.</p>
-        </div>
-        <div class="project">
-            <h3>HR Analytics</h3>
-            <p>Built HR dashboards to track employee performance, hiring, and retention.</p>
-        </div>
-    </section>
+<section id="projects">
+  <span class="eyebrow">Projects</span>
+  <h2 class="sec-title">Selected <span class="hl">work</span></h2>
+  <p class="sec-sub">A few projects that show how I turn data into decisions across different industries.</p>
+  <div class="projects-grid">
 
-    <!-- ===== Contact Section ===== -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:Wafadakheel@gmail.com">Wafadakheel@gmail.com</a></p>
-        <p>
-            LinkedIn: 
-            <a href="https://www.linkedin.com/in/wafa-dakheel-58173991/" target="_blank">
-                My LinkedIn
-            </a>
-        </p>
-    </section>
+    <div class="pcard">
+      <div class="thumb">Power BI</div>
+      <div class="pbody">
+        <h3>Sales Dashboard</h3>
+        <p>Created interactive dashboards for sales teams to track revenue growth and KPIs.</p>
+        <div class="tag-row"><span class="tag">Power BI</span><span class="tag">Sales</span></div>
+      </div>
+    </div>
 
-    <!-- ===== Footer ===== -->
-    <footer>
-        <p>&copy; 2026 Wafa Dakheel. All rights reserved.</p>
-    </footer>
+    <div class="pcard">
+      <div class="thumb">Healthcare</div>
+      <div class="pbody">
+        <h3>Healthcare Analysis</h3>
+        <p>Analyzed patient and treatment data to optimize hospital performance.</p>
+        <div class="tag-row"><span class="tag">Excel</span><span class="tag">Healthcare</span></div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="thumb">HR Analytics</div>
+      <div class="pbody">
+        <h3>HR Analytics</h3>
+        <p>Built HR dashboards to track employee performance, hiring, and retention.</p>
+        <div class="tag-row"><span class="tag">Power BI</span><span class="tag">HR</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-card">
+    <h2>Let's work together ✨</h2>
+    <p>Have data that needs a clear story? Reach out through any of these channels.</p>
+    <div class="social-row">
+      <a href="mailto:Wafadakheel@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/wafa-dakheel-58173991/" target="_blank">LinkedIn</a>
+      <a href="https://www.kaggle.com/wafasstudyblr/code" target="_blank">Kaggle</a>
+      <a href="https://www.upwork.com/services/product/development-it-data-analysis-with-excel-and-power-bi-1750559983712051200" target="_blank">Upwork</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 <span>Wafa Dakheel</span>. All rights reserved.
+</footer>
 
 </body>
 </html>
