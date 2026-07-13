@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data With Wafa | Data Analytics Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#e75d9a;
+    --pink-soft:#ffe1ee;
+    --pink-mid:#ff9bc4;
+    --sky:#1fa9cf;
+    --sky-soft:#d6f4ff;
+    --sky-mid:#6bd6f2;
+    --ink:#241b2b;
+    --ink-soft:#75677f;
+    --cream:#fffaf8;
+    --line:#f0d7e3;
+    --done:#22b573;
+    --shadow: 0 24px 50px -24px rgba(231,93,154,0.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk',sans-serif; background:var(--cream); color:var(--ink);
+    background-image:
+      linear-gradient(rgba(231,93,154,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(231,93,154,0.05) 1px, transparent 1px);
+    background-size:42px 42px;
+    padding-bottom:60px;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;}
+
+  nav{
+    position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between;
+    padding:20px 6%; background:rgba(255,250,248,0.9); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'Fraunces',serif; font-weight:700; font-size:1.3rem; color:var(--ink); display:flex; align-items:center; gap:8px;}
+  .logo .sq{width:10px;height:10px;background:var(--pink); display:inline-block;}
+  .logo .sq2{width:10px;height:10px;background:var(--sky); display:inline-block; margin-right:-4px;}
+  nav a.back{text-decoration:none; color:var(--ink-soft); font-weight:500; font-size:.9rem;}
+  nav a.back:hover{color:var(--pink);}
+
+  .hero{max-width:1000px; margin:0 auto; padding:70px 6% 40px; text-align:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:.78rem;
+    color:var(--sky); background:var(--sky-soft); padding:6px 14px; border-radius:6px; margin-bottom:20px; letter-spacing:.5px;
+  }
+  .eyebrow::before{content:'●'; color:var(--pink); font-size:.6rem;}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem); font-weight:600; margin-bottom:16px;}
+  .hero h1 em{font-style:italic; color:var(--pink); font-weight:500;}
+  .hero p{color:var(--ink-soft); font-size:1.05rem; max-width:600px; margin:0 auto 34px; line-height:1.85;}
+
+  .progress-card{
+    max-width:640px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:20px;
+    padding:26px 30px; box-shadow:var(--shadow);
+  }
+  .progress-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;}
+  .progress-top .pct{font-family:'Fraunces',serif; font-weight:700; font-size:2rem; color:var(--pink);}
+  .progress-top .lbl{font-family:'JetBrains Mono',monospace; font-size:.78rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.5px;}
+  .progress-track{width:100%; height:12px; background:var(--sky-soft); border-radius:20px; overflow:hidden;}
+  .progress-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--pink),var(--sky)); border-radius:20px; transition:width .4s ease;}
+  .progress-note{margin-top:12px; font-size:.82rem; color:var(--ink-soft); font-family:'JetBrains Mono',monospace;}
+
+  main{max-width:900px; margin:0 auto; padding:50px 6% 0;}
+  .module{margin-bottom:44px; background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden;}
+  .module-head{display:flex; align-items:center; gap:16px; padding:24px 28px; border-bottom:1px solid var(--line); background:var(--pink-soft);}
+  .module-num{font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--pink); font-size:1rem; background:#fff; width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .module-head h2{font-size:1.25rem; font-weight:600; flex:1;}
+  .module-head .m-count{font-family:'JetBrains Mono',monospace; font-size:.75rem; color:var(--ink-soft); white-space:nowrap;}
+  .module-body{padding:8px 10px;}
+  .task{display:flex; align-items:flex-start; gap:14px; padding:14px 18px; border-radius:12px; cursor:pointer; transition:background .2s;}
+  .task:hover{background:var(--sky-soft);}
+  .task input{display:none;}
+  .checkbox{
+    width:22px; height:22px; border-radius:6px; border:2px solid var(--sky); flex-shrink:0; margin-top:2px;
+    display:flex; align-items:center; justify-content:center; transition:all .2s; background:#fff;
+  }
+  .checkbox svg{width:13px; height:13px; opacity:0; transition:opacity .15s;}
+  .task input:checked + .checkbox{background:var(--done); border-color:var(--done);}
+  .task input:checked + .checkbox svg{opacity:1;}
+  .task-text{font-size:.95rem; line-height:1.6;}
+  .task-text .t-title{font-weight:600;}
+  .task-text .t-desc{color:var(--ink-soft); font-size:.85rem; margin-top:2px;}
+  .task input:checked ~ .task-text .t-title{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--done);}
+
+  footer{text-align:center; padding:40px 6% 0; color:var(--ink-soft); font-size:.8rem; font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="sq"></span><span class="sq2"></span>&nbsp;Data With Wafa</div>
+  <a class="back" href="index.html">← Back to Portfolio</a>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">LEARNING PATH</div>
+  <h1>The <em>Data Analytics</em> Roadmap</h1>
+  <p>A step-by-step learning plan I follow (and share) to grow from data basics to a confident,
+    job-ready data analyst — covering Excel, SQL, Power BI, Python, statistics, and storytelling with data.</p>
+
+  <div class="progress-card">
+    <div class="progress-top">
+      <span class="pct" id="pctLabel">0%</span>
+      <span class="lbl" id="doneLabel">0 / 0 completed</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-note">Check off items as you go — your progress updates live.</div>
+  </div>
+</section>
+
+<main id="modules">
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">01</div>
+      <h2>Foundations</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Understand what data analysis is</div><div class="t-desc">Types of data, the analytics lifecycle, and where analysts fit in a business</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Excel fundamentals</div><div class="t-desc">Formulas, formatting, sorting & filtering</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Pivot Tables & Power Pivot</div><div class="t-desc">Summarizing and exploring data quickly</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Data cleaning basics</div><div class="t-desc">Handling duplicates, missing values, and inconsistent formats</div></span></label>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">02</div>
+      <h2>Statistics & Math</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Descriptive statistics</div><div class="t-desc">Mean, median, mode, variance, standard deviation</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Probability basics</div><div class="t-desc">Distributions and how randomness shapes data</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Correlation vs. causation</div><div class="t-desc">Reading relationships between variables correctly</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Hypothesis testing intro</div><div class="t-desc">The logic behind A/B tests and significance</div></span></label>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">03</div>
+      <h2>SQL</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">SELECT, WHERE, ORDER BY</div><div class="t-desc">Querying and filtering relational data</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">JOINs</div><div class="t-desc">Inner, left, right, and full joins across tables</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">GROUP BY & aggregate functions</div><div class="t-desc">SUM, COUNT, AVG for summarized insights</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Subqueries & CTEs</div><div class="t-desc">Structuring complex, readable queries</div></span></label>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">04</div>
+      <h2>Data Visualization</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Power BI fundamentals</div><div class="t-desc">Connecting data, Power Query, data modeling</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">DAX basics</div><div class="t-desc">Calculated columns and measures</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Dashboard design principles</div><div class="t-desc">Layout, color, and choosing the right chart</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Build a full interactive dashboard</div><div class="t-desc">End-to-end project from raw data to published report</div></span></label>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">05</div>
+      <h2>Python for Data Analysis</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Python basics</div><div class="t-desc">Variables, loops, functions</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Pandas & NumPy</div><div class="t-desc">Loading, cleaning, and transforming datasets</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Data visualization in Python</div><div class="t-desc">Matplotlib / Seaborn for exploratory analysis</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Intro to statistics & AI with Python</div><div class="t-desc">The math foundations behind AI algorithms</div></span></label>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">06</div>
+      <h2>Business Acumen & Storytelling</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Defining KPIs & metrics</div><div class="t-desc">Choosing the numbers that actually matter</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Data storytelling</div><div class="t-desc">Turning findings into a narrative decision-makers act on</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Presenting to stakeholders</div><div class="t-desc">Clear, confident communication of insights</div></span></label>
+    </div>
+  </div>
+
+  <div class="module">
+    <div class="module-head">
+      <div class="module-num">07</div>
+      <h2>Portfolio & Job Prep</h2>
+      <div class="m-count"></div>
+    </div>
+    <div class="module-body">
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Build 3–5 portfolio projects</div><div class="t-desc">Real datasets across different industries</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Publish work online</div><div class="t-desc">Portfolio site, LinkedIn, Kaggle</div></span></label>
+      <label class="task"><input type="checkbox"><span class="checkbox"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="task-text"><div class="t-title">Prepare for interviews</div><div class="t-desc">Practice explaining projects and technical questions</div></span></label>
+    </div>
+  </div>
+
+</main>
+
+<footer>© 2026 Data With Wafa — a learning roadmap by Wafa Dakheel</footer>
+
+<script>
+  const boxes = document.querySelectorAll('.task input[type=checkbox]');
+  const pctLabel = document.getElementById('pctLabel');
+  const doneLabel = document.getElementById('doneLabel');
+  const fill = document.getElementById('progressFill');
+  const modules = document.querySelectorAll('.module');
+
+  function update(){
+    const total = boxes.length;
+    const done = document.querySelectorAll('.task input[type=checkbox]:checked').length;
+    const pct = total ? Math.round((done/total)*100) : 0;
+    pctLabel.textContent = pct + '%';
+    doneLabel.textContent = done + ' / ' + total + ' completed';
+    fill.style.width = pct + '%';
+
+    modules.forEach(m=>{
+      const mb = m.querySelectorAll('input[type=checkbox]');
+      const md = m.querySelectorAll('input[type=checkbox]:checked').length;
+      m.querySelector('.m-count').textContent = md + '/' + mb.length;
+    });
+  }
+  boxes.forEach(b=>b.addEventListener('change', update));
+  update();
+</script>
+
+</body>
+</html>
