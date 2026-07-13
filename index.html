@@ -109,10 +109,14 @@
   /* COURSES */
   .courses-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;}
   .course-card{
-    background:#fff; border:1px solid var(--line); border-radius:18px; padding:28px;
-    display:flex; flex-direction:column; gap:14px; transition:transform .25s, box-shadow .25s;
+    background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden;
+    display:flex; flex-direction:column; transition:transform .25s, box-shadow .25s;
   }
   .course-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .course-thumb{width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--sky-soft);}
+  .course-thumb img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;}
+  .course-card:hover .course-thumb img{transform:scale(1.05);}
+  .course-body{padding:24px; display:flex; flex-direction:column; gap:14px; flex:1;}
   .course-badge{
     align-self:flex-start; font-family:'JetBrains Mono',monospace; font-size:.7rem;
     color:var(--sky); background:var(--sky-soft); padding:5px 12px; border-radius:20px; text-transform:uppercase; letter-spacing:.4px;
@@ -247,67 +251,79 @@
   <div class="courses-grid">
 
     <div class="course-card">
-      <span class="course-badge">Excel</span>
-      <h3>Professional Data Analysis Using Excel</h3>
-      <ul class="course-topics">
-        <li>Introduction to data analysis</li>
-        <li>Understanding big data concepts and types</li>
-        <li>Exploratory Data Analysis (EDA)</li>
-        <li>Excel data analysis workflow &amp; tools (functions, Pivot Tables, charts)</li>
-        <li>Correlation analysis between variables</li>
-      </ul>
-      <div class="course-meta">
-        <span>Free · Live via Zoom</span>
-        <span>King Fahd Public Library, Jeddah</span>
+      <div class="course-thumb"><img src="images/course-excel-analysis.jpg" alt="Professional Data Analysis Using Excel poster" loading="lazy"></div>
+      <div class="course-body">
+        <span class="course-badge">Excel</span>
+        <h3>Professional Data Analysis Using Excel</h3>
+        <ul class="course-topics">
+          <li>Introduction to data analysis</li>
+          <li>Understanding big data concepts and types</li>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Excel data analysis workflow &amp; tools (functions, Pivot Tables, charts)</li>
+          <li>Correlation analysis between variables</li>
+        </ul>
+        <div class="course-meta">
+          <span>Free · Live via Zoom</span>
+          <span>King Fahd Public Library, Jeddah</span>
+        </div>
       </div>
     </div>
 
     <div class="course-card">
-      <span class="course-badge">Power BI</span>
-      <h3>Data Analysis Skills Using Power BI</h3>
-      <ul class="course-topics">
-        <li>Introduction to Power BI &amp; its components</li>
-        <li>Connecting &amp; importing data</li>
-        <li>Data exploration &amp; cleaning with Power Query</li>
-        <li>Data modeling &amp; building relationships</li>
-        <li>DAX fundamentals</li>
-        <li>Full applied project</li>
-      </ul>
-      <div class="course-meta">
-        <span>Free · Live via Zoom</span>
-        <span>King Fahd Public Library, Jeddah</span>
+      <div class="course-thumb"><img src="images/course-powerbi.jpg" alt="Data Analysis Skills Using Power BI poster" loading="lazy"></div>
+      <div class="course-body">
+        <span class="course-badge">Power BI</span>
+        <h3>Data Analysis Skills Using Power BI</h3>
+        <ul class="course-topics">
+          <li>Introduction to Power BI &amp; its components</li>
+          <li>Connecting &amp; importing data</li>
+          <li>Data exploration &amp; cleaning with Power Query</li>
+          <li>Data modeling &amp; building relationships</li>
+          <li>DAX fundamentals</li>
+          <li>Full applied project</li>
+        </ul>
+        <div class="course-meta">
+          <span>Free · Live via Zoom</span>
+          <span>King Fahd Public Library, Jeddah</span>
+        </div>
       </div>
     </div>
 
     <div class="course-card">
-      <span class="course-badge">Excel</span>
-      <h3>Report Preparation Using Excel</h3>
-      <ul class="course-topics">
-        <li>Organizing data in Excel for reporting</li>
-        <li>Analyzing data using Excel tools</li>
-        <li>Building clear, professional reports</li>
-        <li>Charts &amp; dashboards</li>
-        <li>Automating reports to save time and effort</li>
-      </ul>
-      <div class="course-meta">
-        <span>Free · Live via Zoom</span>
-        <span>King Fahd Public Library, Jeddah</span>
+      <div class="course-thumb"><img src="images/course-excel-reports.jpg" alt="Report Preparation Using Excel poster" loading="lazy"></div>
+      <div class="course-body">
+        <span class="course-badge">Excel</span>
+        <h3>Report Preparation Using Excel</h3>
+        <ul class="course-topics">
+          <li>Organizing data in Excel for reporting</li>
+          <li>Analyzing data using Excel tools</li>
+          <li>Building clear, professional reports</li>
+          <li>Charts &amp; dashboards</li>
+          <li>Automating reports to save time and effort</li>
+        </ul>
+        <div class="course-meta">
+          <span>Free · Live via Zoom</span>
+          <span>King Fahd Public Library, Jeddah</span>
+        </div>
       </div>
     </div>
 
     <div class="course-card">
-      <span class="course-badge">Python · Statistics</span>
-      <h3>Statistics for Data Science &amp; AI</h3>
-      <ul class="course-topics">
-        <li>Statistics behind data science and AI</li>
-        <li>How to let the numbers "speak" and drive smart decisions</li>
-        <li>In-depth data analysis</li>
-        <li>The math foundations behind AI algorithms</li>
-        <li>Includes exercises, a project bank, and 25 hands-on tasks</li>
-      </ul>
-      <div class="course-meta">
-        <span>Self-paced · Career track</span>
-        <span>By Wafa Dakheel</span>
+      <div class="course-thumb"><img src="images/course-stats-ai.jpg" alt="Statistics for Data Science and AI poster" loading="lazy"></div>
+      <div class="course-body">
+        <span class="course-badge">Python · Statistics</span>
+        <h3>Statistics for Data Science &amp; AI</h3>
+        <ul class="course-topics">
+          <li>Statistics behind data science and AI</li>
+          <li>How to let the numbers "speak" and drive smart decisions</li>
+          <li>In-depth data analysis</li>
+          <li>The math foundations behind AI algorithms</li>
+          <li>Includes exercises, a project bank, and 25 hands-on tasks</li>
+        </ul>
+        <div class="course-meta">
+          <span>Self-paced · Career track</span>
+          <span>By Wafa Dakheel</span>
+        </div>
       </div>
     </div>
 
